@@ -46,7 +46,11 @@ fun WelcomeScreen(navController: NavController){
                 contentDescription = "Logo",
                 colorFilter = ColorFilter.tint(Color.White)
             )
-            TextButton(onClick = {navController.navigate(Screen.Home.route)},
+            TextButton(onClick = {navController.navigate(Screen.Home.route){
+                popUpTo(Screen.Home.route){
+                    inclusive = true
+                }
+            } },
                 contentPadding = PaddingValues(
                     top = 12.dp,
                     bottom = 12.dp

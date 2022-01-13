@@ -1,9 +1,6 @@
 package com.example.composeapp.screens
 
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -11,11 +8,8 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -42,6 +36,9 @@ fun SignInScreen(navController: NavController){
     var email by rememberSaveable { mutableStateOf("") }
     var password by rememberSaveable { mutableStateOf("") }
 
+    val scrollState = rememberScrollState()
+    LaunchedEffect(Unit) { scrollState.animateScrollTo(0) }
+
     Column(
         modifier = Modifier
             .padding(horizontal = 20.dp)
@@ -61,6 +58,7 @@ fun SignInScreen(navController: NavController){
         }
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = Modifier.verticalScroll(scrollState)
         ) {
             Text(text = "Welcome Back", modifier = Modifier.padding(bottom = 10.dp), textAlign = TextAlign.Center, style = TextStyle(fontSize = 28.sp))
             Button(onClick = {},

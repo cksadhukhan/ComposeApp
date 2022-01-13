@@ -56,7 +56,7 @@ fun WelcomeText(){
         horizontalAlignment =  Alignment.CenterHorizontally,
         modifier = Modifier.padding(horizontal = 22.dp)
     ) {
-        Text(text = "We are what we do", modifier = Modifier.padding(14.dp), style = TextStyle(fontSize = 32.sp))
+        Text(text = "We are what we do", modifier = Modifier.padding(14.dp), style = TextStyle(fontSize = 28.sp))
         Text(text = "Thousand of people are using silent moon for smalls meditation", textAlign = TextAlign.Center, style = TextStyle(color = textLight, fontSize = 14.sp))
     }
 }

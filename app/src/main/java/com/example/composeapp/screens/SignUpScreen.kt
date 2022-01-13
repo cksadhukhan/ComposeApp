@@ -1,9 +1,6 @@
 package com.example.composeapp.screens
 
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -11,8 +8,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -30,8 +26,6 @@ import androidx.navigation.compose.rememberNavController
 import com.example.composeapp.R
 import com.example.composeapp.ui.theme.primaryButtonColor
 import com.example.composeapp.ui.theme.textLight
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import com.example.composeapp.Screen
@@ -43,6 +37,9 @@ fun SignUpScreen(navController: NavController){
     var password by rememberSaveable { mutableStateOf("") }
     var name by rememberSaveable { mutableStateOf("") }
     val checkedState = rememberSaveable { mutableStateOf(false) }
+
+    val scrollState = rememberScrollState()
+    LaunchedEffect(Unit) { scrollState.animateScrollTo(0) }
 
     Column(
         modifier = Modifier
@@ -61,9 +58,11 @@ fun SignUpScreen(navController: NavController){
                 Icon(Icons.Default.ArrowBack, contentDescription = "content description", tint = Color.DarkGray)
             }
         }
-        Column{
+        Column(
+            modifier = Modifier.verticalScroll(scrollState)
+        ){
             Column(
-                horizontalAlignment = Alignment.CenterHorizontally
+                horizontalAlignment = Alignment.CenterHorizontally,
             ) {
                 Text(text = "Create Your Account", modifier = Modifier.padding(bottom = 10.dp), textAlign = TextAlign.Center, style = TextStyle(fontSize = 28.sp))
                 Button(onClick = {},
